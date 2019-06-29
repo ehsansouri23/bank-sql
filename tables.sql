@@ -65,8 +65,32 @@ create table if not exists payment(
 	p_id int not null primary key auto_increment,
     p_note varchar(50),
     p_maker int not null,
+    c_id int not null,
     a_id int not null,
+    foreign key(c_id) references customer(c_id),
     foreign key(a_id) references bank_account(a_id));
+    
+create table if not exists account_transaction(
+	p_id int not null,
+    a_id int not null,
+    price int,
+    primary key(p_id, a_id),
+    foreign key(p_id) references payment(p_id),
+    foreign key(a_id) references bank_account(a_id));
+    
+create table if not exists sign_payment(
+	c_id int not null,
+    p_id int not null,
+    primary key(c_id, p_id),
+    foreign key(c_id) references customer(c_id),
+    foreign key(p_id) references payment(p_id));
+
+create table if not exists confirm_payment(
+	c_id int not null,
+    p_id int not null,
+    primary key(c_id, p_id),
+    foreign key(c_id) references customer(c_id),
+    foreign key(p_id) references payment(p_id));
 
     
     
