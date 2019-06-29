@@ -1,10 +1,11 @@
-use ehsandb;
+create database ehsandb2;
+use ehsandb2;
 create table if not exists customer(
 	c_id int not null primary key auto_increment,
 	c_name varchar(20),
     c_lastname varchar(20),
     c_melli int,
-    c_pass varchar(20));
+    c_pass varchar(200));
     
 create table if not exists call_number(
 	c_id int not null,
