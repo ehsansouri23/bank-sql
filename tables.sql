@@ -90,6 +90,3 @@ create table if not exists confirm_payment(
     primary key(c_id, p_id),
     foreign key(c_id) references customer(c_id),
     foreign key(p_id) references payment(p_id));
-
-    
-    

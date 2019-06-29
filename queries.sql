@@ -4,10 +4,9 @@ select distinct customer.c_name, customer.c_lastname from
     
 /* 2 */
 select bank_account.a_id as id from 
-	bank_account natural join sign_permission
-    where bank_account.a_sign_count > (
-		select count(distinct sign_permission.c_id) from
-			sign_permission where id = sign_permission.a_id);
+	bank_account natural join payment
+    where bank_account.a_sign_count > (get_sign_count(payment.p_id));
+    
 
 /* 5 */
 select account_owner.a_id from
