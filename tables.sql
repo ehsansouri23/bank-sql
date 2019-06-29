@@ -64,7 +64,6 @@ create table if not exists settings(
 create table if not exists payment(
 	p_id int not null primary key auto_increment,
     p_note varchar(50),
-    p_maker int not null,
     c_id int not null,
     a_id int not null,
     foreign key(c_id) references customer(c_id),
